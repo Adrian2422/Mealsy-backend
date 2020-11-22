@@ -7,10 +7,11 @@ import config from './config/config';
 import { notFound, catchErrors } from './middlewares/errors';
 import bodyParser from 'body-parser';
 import passport from './config/passport';
-import usersApi from './routes/users.routes';
-import authApi from './routes/auth.routes';
 import register from 'babel-core/register';
 import babelPolyfill from 'babel-polyfill';
+import usersApi from './routes/users.routes';
+import recipesApi from './routes/recipes.routes';
+import authApi from './routes/auth.routes';
 import userUtils from './controllers/users.controller';
 
 // Connect to database
@@ -41,7 +42,7 @@ app.use(bodyParser.json());
 
 // routes config
 app.use('/api', usersApi());
-app.use('/api', authApi());
+app.use('/api', recipesApi());
 
 // errors handling
 app.use(notFound);

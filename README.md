@@ -9,6 +9,8 @@ It is the backend of the Mealsy application, used to communicate the application
 
 
 ## APIs
+  ### Users managements apis
+
  | method | url    | parameter | describtion        |
  |--------|--------|-----------|--------------------|
  | GET    | /users |           | get all users data |
@@ -17,7 +19,19 @@ It is the backend of the Mealsy application, used to communicate the application
  | PUT    | /users | id        | update user by id  |
  | DELETE | /users | id        | delete user by id  |
  | DELETE | /users |           | delete all users   |
+<br>
 
+ ### Recipes management apis
+
+ | method | url      | parameter | describtion          |
+ |--------|----------|-----------|----------------------|
+ | GET    | /recipes |           | get all recipes data |
+ | GET    | /recipes | id        | get recipe by id     |
+ | POST   | /recipes |           | post new recipe      |
+ | PUT    | /recipes | id        | update recipe by id  |
+ | DELETE | /recipes | id        | delete recipe by id  |
+ | DELETE | /recipes |           | delete all recipes   |
+<br>
 
 ## Technologies used:
 ![Node.js](https://img.shields.io/badge/Node.js-Express.js-339933?style=flat-square&logo=node.js&logoColor=white)
