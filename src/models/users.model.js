@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import isEmail from 'validator';
-// import mongoPagination from 'mongo-cursor-pagination';
 
 const User = new mongoose.Schema({
   username: {
@@ -23,15 +22,11 @@ const User = new mongoose.Schema({
   age: {
     type: Number,
   },
-  description: String, 
   permissions: {
     type: Number,
     required: true,
     enum: [1, 2, 3],
   }
-}, { timestamps: true });
+}, { timestamps: true })
 
-User.index({ description: 'text' });
-// User.plugin(mongoPagination.mongoosePlugin);
-
-export default mongoose.model('User', User);
+export default mongoose.model('User', User)
