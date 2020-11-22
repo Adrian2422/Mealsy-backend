@@ -24,12 +24,13 @@ It is the backend of the Mealsy application, used to communicate the application
 ![MongoDB](https://img.shields.io/badge/MongoDB-Monoose-47A248?style=flat-square&logo=MongoDB&logoColor=white)
 
 ## Installation
-The installation only requires cloning the repository, installing dependencies and starting the server.
+ --- in progress ---
+<!-- The installation only requires cloning the repository, installing dependencies and starting the server.
 ```
-git clone https://github.com/Adrian2422/Mealsy.git
+git clone https://github.com/Adrian2422/Mealsy-backend.git
 npm install
 npm start
-```
+``` -->
 ## Screenshots
  --- in progress ---
 <!-- <p float="left">
@@ -56,7 +57,6 @@ npm start
  - validator
  - body-parser
  - bcrypt
- - mongo-cursor-paginator
 
 ## Live
  --- in progress ---

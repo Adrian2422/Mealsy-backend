@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import isEmail from 'validator';
-import mongoPagination from 'mongo-cursor-pagination';
+// import mongoPagination from 'mongo-cursor-pagination';
 
 const User = new mongoose.Schema({
   username: {
@@ -30,6 +30,6 @@ const User = new mongoose.Schema({
   }
 }, { timestamps: true })
 
-User.plugin(mongoPagination.mongoosePlugin);
+// User.plugin(mongoPagination.mongoosePlugin);
 
 export default mongoose.model('User', User)

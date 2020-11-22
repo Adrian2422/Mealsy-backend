@@ -12,24 +12,12 @@ export default {
   },
   
   async findAllUsers(req, res) {
-    const usersPromise = User.paginate({
-      limit: parseInt(req.query.per_page) || 2,
-      previous: req.query.previous || null,
-      next: req.query.next || null
-    });
-    const countPromise = User.countDocuments();
-    const [users, count] = await Promise.all([usersPromise, countPromise]);
-
-    const links = {};
-    if(users.hasNext){
-      links.next = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?next=${users.next}`;
-    }
-    if(users.hasPrevious){
-      links.previous = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?previous=${users.previous}`;
-    }
-    res.links(links);
-    res.set('total-count', count);
-    return res.status(200).send(users.results);
+    const offset = parseInt(req.query.offset) || 0;
+    const per_page = parseInt(req.query.per_page) || 2;
+    const songsPromise = Song.find().skip(offset).limit(per_page).sort({ createdAt: 'desc' });
+    const countPromise = Song.count();
+    const [songs, count] = await Promise.all([songsPromise, countPromise]);
+    return res.status(200).send({ data: songs, count });
   },
   
   async findOneUser(req, res, next) {
