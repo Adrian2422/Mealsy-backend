@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import isEmail from 'validator';
+import passportLocalMongoose from 'passport-local-mongoose';
 
 const User = new mongoose.Schema({
   username: {
@@ -9,11 +10,11 @@ const User = new mongoose.Schema({
     lowercase: true,
     minlength: 6,
   },
-  password:{
-    type: String,
-    required: true,
-    minlength: 8
-  },
+  // password:{
+  //   type: String,
+  //   required: true,
+  //   minlength: 8
+  // },
   email:{
     type: String,
     unique: true,
@@ -27,6 +28,8 @@ const User = new mongoose.Schema({
     required: true,
     enum: [1, 2, 3],
   }
-}, { timestamps: true })
+}, { timestamps: true });
+
+User.plugin(passportLocalMongoose, {username: 'username'});
 
 export default mongoose.model('User', User)

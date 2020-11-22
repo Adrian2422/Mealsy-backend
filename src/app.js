@@ -1,16 +1,24 @@
+import dotenv from 'dotenv';
+dotenv.config({path: '.env'});
+
 import express from 'express';
 import { join } from 'path';
 import config from './config/config';
 import { notFound, catchErrors } from './middlewares/errors';
 import bodyParser from 'body-parser';
+import passport from './config/passport';
+import usersApi from './routes/users.routes';
+import authApi from './routes/auth.routes';
 import register from 'babel-core/register';
 import babelPolyfill from 'babel-polyfill';
-import usersApi from './routes/users.routes';
 import userUtils from './controllers/users.controller';
 
 // Connect to database
 import dbConfig from './config/database';
 import mongoose from 'mongoose';
+
+// Configure passport
+passport();
 
 mongoose.connect(dbConfig.mongoUrl, {
   useNewUrlParser: true,
@@ -33,6 +41,7 @@ app.use(bodyParser.json());
 
 // routes config
 app.use('/api', usersApi());
+app.use('/api', authApi());
 
 // errors handling
 app.use(notFound);
