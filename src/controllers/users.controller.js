@@ -12,12 +12,18 @@ export default {
   },
   
   async findAllUsers(req, res) {
-    const offset = parseInt(req.query.offset) || 0;
-    const per_page = parseInt(req.query.per_page) || 2;
-    const songsPromise = Song.find().skip(offset).limit(per_page).sort({ createdAt: 'desc' });
-    const countPromise = Song.count();
-    const [songs, count] = await Promise.all([songsPromise, countPromise]);
-    return res.status(200).send({ data: songs, count });
+    const sort_by = {};
+        sort_by[req.query.sort_by || 'createdAt'] = req.query.order_by || 'desc';
+        const offset = parseInt(req.query.offset) || 0;
+        const per_page = parseInt(req.query.per_page) || 2;
+        const usersPromise =
+        User.find(req.filters)
+            .skip(offset)
+            .limit(per_page)
+            .sort(sort_by);
+        const countPromise = User.countDocuments(req.filters);
+        const [users, count] = await Promise.all([usersPromise, countPromise]);
+        return res.status(200).send({ data: users, count });
   },
   
   async findOneUser(req, res, next) {
