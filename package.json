@@ -7,7 +7,7 @@
     "build": "rimraf ./dist && babel ./src -d ./dist --source-maps",
     "prestart": "npm run -s build",
     "start": "NODE_ENV=production PORT=8080 node dist/app.js",
-    "dev": "NODE_ENV=development PORT=8080 nodemon -w ./src/app.js --exec \"babel-node ./src/app.js\"",
+    "dev": "NODE_ENV=development PORT=8080 nodemon -L -w ./src/app.js --exec \"babel-node ./src/app.js\"",
     "seed": "babel-node ./src/seeders/user.seed.js",
     "debug": "NODE_ENV=development PORT=8080 babel-node --inspect ./src/app.js"
   },
@@ -39,6 +39,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "faker": "^5.1.0",
     "mongoose-seed": "^0.6.0",
