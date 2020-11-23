@@ -4,10 +4,10 @@ const Recipe = new mongoose.Schema({
   name:{
     type: String,
     required: true,
+    maxlength: 20,
   },
   tags:{
     type: Array,
-    maxlength: 5,
     lowercase: true,
   },
   photo:{

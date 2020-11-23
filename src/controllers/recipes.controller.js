@@ -2,25 +2,13 @@ import Recipe from "../models/recipes.model";
 
 export default {
    async createRecipe(req, res) {
-    const newData = {};
-    const { name, tags, photo, ingredients, instructions, link, creator } = req.body;
-    newData.name = `${name[0].toUpperCase()}${name.slice(1)}`;
-    newData.tags = tags.split(',');
-    newData.photo = photo;
-    newData.ingredients = [];
-    ingredients.forEach((item, key) => {
-      newData.ingredients.push({
-        amount: item.amount,
-        name: item.name,
-        weight: item.weight,
-        unit: item.unit
-      });
-    });
-    newData.instructions = instructions;
-    newData.link = link;
-    newData.creator = creator;
-    const recipe = await new Recipe(newData).save();
-    return res.status(201).send({data: recipe, message: 'Recipe was created!'});
+     const engravedData = req.engravedData;
+    if(Object.keys(engravedData).length > 0 && engravedData.constructor === Object){
+      const recipe = await new Recipe(engravedData).save();
+      return res.status(201).send({data: recipe, message: 'Recipe was created!'});
+    } else {
+      return res.status(422).send({data: req.body, message: 'Some data is invalid!'});
+    }
   },
   
   async findAllRecipes(req, res) {
