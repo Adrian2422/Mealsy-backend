@@ -41,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes config
+app.use('/api', authApi());
 app.use('/api', usersApi());
 app.use('/api', recipesApi());
 

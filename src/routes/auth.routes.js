@@ -7,7 +7,7 @@ export default () => {
   const api = Router();
 
   // POST new user
-  api.post('/register', catchAsync, AuthController.register);
+  api.post('/register', AuthController.register);
 
   // POST log in user
   api.post('/login', passport.authenticate('local', { session: false }), AuthController.login);
