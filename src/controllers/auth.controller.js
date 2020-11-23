@@ -3,14 +3,14 @@ import jwt from 'jsonwebtoken';
 
 export default {
   async register(req, res, next){
-    const { username, email, age, permissions, password } = req.body;
-    const user = await User.findOne({ $or: [{username: username}, {email: email}]});
-    if(!user){
+    const engravedData = req.engravedData;
+    const { username, email, age, permissions, password } = engravedData;
+    if(Object.keys(engravedData).length > 0 && engravedData.constructor === Object){
       const user = new User({username, email, age, permissions});
       await User.register(user, password);
-      res.send('User created successfully. Now you can log in.');
+      return res.status(201).send('User created successfully. Now you can log in.');
     } else {
-      res.send('User with this username/email already exist! Please insert unused data!');
+      return res.status(422).send({data: req.body, message: 'Some data is invalid!'});
     }
   },
 

@@ -10,11 +10,6 @@ const User = new mongoose.Schema({
     lowercase: true,
     minlength: 6,
   },
-  // password:{
-  //   type: String,
-  //   required: true,
-  //   minlength: 8
-  // },
   email:{
     type: String,
     unique: true,
@@ -32,4 +27,4 @@ const User = new mongoose.Schema({
 
 User.plugin(passportLocalMongoose, {username: 'username'});
 
-export default mongoose.model('User', User)
+export default mongoose.model('User', User);

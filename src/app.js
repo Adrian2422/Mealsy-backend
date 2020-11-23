@@ -6,6 +6,7 @@ import { join } from 'path';
 import config from './config/config';
 import { notFound, catchErrors } from './middlewares/errors';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import passport from './config/passport';
 import register from 'babel-core/register';
 import babelPolyfill from 'babel-polyfill';
@@ -39,6 +40,7 @@ app.set('views', join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // routes config
 app.use('/api', authApi());
