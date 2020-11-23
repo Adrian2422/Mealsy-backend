@@ -1,12 +1,13 @@
 import Router from 'express';
 import recipesController from '../controllers/recipes.controller';
 import { catchAsync } from '../middlewares/errors';
+import validateRecipe from '../middlewares/validators/recipes.validator';
 
 export default () => {
   const api = Router();
 
   // POST /recipes
-  api.post("/recipes", catchAsync(recipesController.createRecipe));
+  api.post("/recipes", validateRecipe, catchAsync(recipesController.createRecipe));
 
   // GET /recipes
   api.get("/recipes", catchAsync(recipesController.findAllRecipes));
