@@ -4,6 +4,7 @@
   "description": "heroku deploy",
   "main": "app.js",
   "scripts": {
+    "rimraf": "./node_modules/rimraf/bin.js",
     "clean": "rimraf ./build && mkdirp ./build",
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
@@ -36,7 +37,8 @@
     "passport-local-mongoose": "^6.0.1",
     "pug": "^3.0.0",
     "qs": "^6.9.4",
-    "validator": "^13.1.17"
+    "validator": "^13.1.17",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@types/babel-core": "^6.25.6",
