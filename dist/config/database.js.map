@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/config/database.js"],"names":["mongoUrl"],"mappings":"6FAAe;AACXA,cAAU,kCADC,E","file":"database.js","sourcesContent":["export default {\r\n    mongoUrl: 'mongodb://127.0.0.1:27017/mealsy'\r\n}"]}
