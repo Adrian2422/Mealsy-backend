@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./dist && babel ./src -d ./dist --source-maps",
     "prestart": "npm run -s build",
-    "start": "NODE_ENV=production PORT=8080 node dist/app.js",
+    "start": "NODE_ENV=production PORT=8080 nodemon -L --exec \"babel-node ./dist/app.js\"",
     "dev": "NODE_ENV=development PORT=8080 nodemon -L --exec \"babel-node ./src/app.js\"",
     "seed": "babel-node ./src/seeders/user.seed.js",
     "debug": "NODE_ENV=development PORT=8080 babel-node --inspect ./src/app.js"
