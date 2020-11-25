@@ -3,7 +3,6 @@ dotenv.config({path: '.env'});
 
 import express from 'express';
 import { join } from 'path';
-import config from './config/config';
 import { notFound, catchErrors } from './middlewares/errors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -52,6 +51,7 @@ app.use(notFound);
 app.use(catchErrors);
 
 // let's play!
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server is up on port ${process.env.PORT || 3000}!`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}!`);
 });
