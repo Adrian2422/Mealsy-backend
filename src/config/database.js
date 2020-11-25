@@ -1,3 +1,3 @@
 export default {
-    mongoUrl: 'mongodb://127.0.0.1:27017/mealsy'
+    mongoUrl: 'AdrianKloc47:P0klik4$@cluster0.oppqy.mongodb.net/mealsy?retryWrites=true&w=majority'
 }
