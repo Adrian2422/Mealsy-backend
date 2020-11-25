@@ -4,9 +4,9 @@ import jwt from 'jsonwebtoken';
 export default {
   async register(req, res, next){
     const engravedData = req.engravedData;
-    const { username, email, age, permissions, password } = engravedData;
+    const { username, email, adult, permissions, password } = engravedData;
     if(Object.keys(engravedData).length > 0 && engravedData.constructor === Object){
-      const user = new User({username, email, age, permissions});
+      const user = new User({username, email, adult, permissions});
       await User.register(user, password);
       return res.status(201).send('User created successfully. Now you can log in.');
     } else {
@@ -18,6 +18,6 @@ export default {
     // generate token
     const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 1200 });
     // return token
-    return res.send({ token });
+    return res.send({ token, id: req.user._id });
   }
 }

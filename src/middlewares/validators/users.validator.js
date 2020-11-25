@@ -4,7 +4,7 @@ import { isEmail } from 'validator'
 export default async function validateUser(req, res, next) {
   const data = {};
   const validData = [];
-  const { username, email, age, permissions, password } = req.body;
+  const { username, email, adult, permissions, password } = req.body;
   const user = await User.findOne({ $or: [{username: username}, {email: email}]});
   if(!user){
     // validate name
@@ -13,9 +13,9 @@ export default async function validateUser(req, res, next) {
     // validate email
     data.email = email;
     validData.push(isEmail(email));
-    // validate age
-    data.age = age;
-    validData.push(age > 13 || typeof age === 'number');
+    // validate adult
+    data.adult = adult;
+    validData.push(typeof adult === 'boolean');
     // validate permissions
     data.permissions = permissions;
     validData.push([1, 2, 3, 4].includes(permissions));
