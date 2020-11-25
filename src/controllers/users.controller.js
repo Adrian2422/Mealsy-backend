@@ -43,7 +43,7 @@ export default {
       user.username = req.body.username;
       user.password = req.body.password;
       user.email = req.body.email;
-      user.age = req.body.age;
+      user.adult = req.body.adult;
       user.permissions = req.body.permissions;
       await user.save();
 

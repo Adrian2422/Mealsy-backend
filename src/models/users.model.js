@@ -15,8 +15,8 @@ const User = new mongoose.Schema({
     unique: true,
     required: true
   },
-  age: {
-    type: Number,
+  adult: {
+    type: Boolean,
   },
   permissions: {
     type: Number,
