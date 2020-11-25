@@ -52,6 +52,6 @@ app.use(notFound);
 app.use(catchErrors);
 
 // let's play!
-app.listen(config.server.port, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is up on port ${config.server.port}!`);
 });
