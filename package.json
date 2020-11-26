@@ -9,7 +9,7 @@
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && NODE_ENV=deploy PORT=8080 node ./build/app.js",
     "dev": "NODE_ENV=development PORT=8080 nodemon -L --exec \"babel-node ./build/app.js\""
-
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
